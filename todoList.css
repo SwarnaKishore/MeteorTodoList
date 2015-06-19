@@ -1,0 +1,33 @@
+.todo-value{
+    border:none;
+    font-family: "Times New Roman";
+    font-size: 100%;
+    padding:0.15em;
+}
+
+.todo-value:hover{
+    background-color: #f9f9f9;
+    cursor:pointer;
+}
+
+.todo-value:focus{
+    background-color: #f9f9f9;
+    cursor:default;
+    outline:none;
+}
+
+
+.checked{
+    background-color:#f0f0f0;
+    color:#666;
+}
+
+.checked .todo-value{
+    text-decoration: line-through;
+}
+
+.checked .todo-value,
+.checked .todo-value:hover,
+.checked .todo-value:focus{
+    background-color:#f0f0f0;
+}

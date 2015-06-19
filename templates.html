@@ -1,0 +1,72 @@
+
+
+<template name="main">
+   
+    {{> yield}}
+  <p>Copyright &copy; Todos, 2014-2015.</p>
+</template>
+
+
+<template name="todosList">
+ {{> addTodo}}
+<ul>
+    {{#each todo}}
+        {{> todoItem}}
+    {{/each}}
+    </ul>
+
+    {{> todosCount}}
+</template>
+
+
+
+<template name="todoItem">
+      <li class="{{checked}}">
+      <input type="checkbox" {{checked}}>
+        <input type="text" value="{{title}}" class="todo-value">
+        [<a href="#" class="delete-todo">Delete</a>]
+    </li>
+</template>
+
+
+
+
+<template name="addTodo">
+    <form>
+        Create a task:
+        <input type="text" placeholder="Type a task here..." name="todoValue">
+    </form>
+</template>
+
+
+<template name="todosCount">
+{{#if totalTodos}}
+    <p>You have completed {{completedTodos}} out of {{totalTodos}} tasks.</p>
+{{/if}}
+</template>
+
+
+<template name="addList">
+    <form>Create a list:
+        <input type="text" placeholder="List name here..." name="listName">
+    </form>
+</template>
+
+
+
+<template name="lists">
+    <h2>Lists</h2>
+    {{> addList}}
+<ul>
+    {{#each list}}
+        <li><a href="{{pathFor route='listPage'}}">{{name}}</a></li>
+    {{/each}}
+</ul>
+</template>
+
+
+<template name="listPage">
+   <h2>Tasks: {{name}}</h2>
+    {{> todosList}}
+</template>
+
