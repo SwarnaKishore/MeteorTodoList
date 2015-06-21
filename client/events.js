@@ -37,10 +37,8 @@ Template.todoItem.events({
     var isCompleted = this.completed;
     if(isCompleted){
         Todos.update({_id: this._id}, {$set: {completed: false}});
-        console.log("Task marked as incomplete.");
     } else {
         Todos.update({_id: this._id}, {$set: {completed: true}});
-        console.log("Task marked as complete.");
     }
 }
 

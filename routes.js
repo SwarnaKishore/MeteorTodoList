@@ -2,12 +2,6 @@ Router.configure({
     layoutTemplate: 'main'
 });
 
-Router.route('/', function(){
-    this.render('main');
-}, {
-    name: 'main'    
-});
-
 
 Router.route('/list/:_id', function(){
     this.render('listPage', {

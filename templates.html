@@ -1,7 +1,9 @@
 
 
 <template name="main">
-   
+
+   {{> loginButtons}}
+    {{> lists}}
     {{> yield}}
   <p>Copyright &copy; Todos, 2014-2015.</p>
 </template>
@@ -69,4 +71,3 @@
    <h2>Tasks: {{name}}</h2>
     {{> todosList}}
 </template>
-
