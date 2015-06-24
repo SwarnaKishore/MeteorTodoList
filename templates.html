@@ -1,10 +1,51 @@
+<template name="nav">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Meteor Todo List</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Lists <span class="sr-only">(current)</span></a></li>
+        <li><a href="#!">{{> loginButtons}}</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+         {{> search}}
+        </div>
+        
+      </form>
+     
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</template>
+
+
+
 
 
 <template name="main">
 
-   {{> loginButtons}}
+{{> nav}}
+   <div class="container">
     {{> yield}}
-  <p>Copyright &copy; Todos, 2014-2015.</p>
+  
+  </div>
+  <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright &copy; Meteor Todo List, 2015.</p>
+      </div>
+    </footer>
 </template>
 
 
@@ -22,21 +63,31 @@
 
 
 <template name="todoItem">
-      <li class="{{checked}}">
-      <input type="checkbox" {{checked}}>
-        <input type="text" value="{{title}}" class="todo-value">
-        [<a href="#" class="delete-todo">Delete</a>]
-    </li>
+   
+              <li class="{{checked}}">
+              <input type="checkbox" {{checked}}>
+                <input type="text" value="{{title}}" class="todo-value">
+                <a href="#" class="delete-todo"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            </li>
+
 </template>
 
 
 
 
 <template name="addTodo">
-    <form>
-        Create a task:
-        <input type="text" placeholder="Type a task here..." name="todoValue">
-    </form>
+ <div class="container">
+     <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <form class="form-horizontal">
+                 <div class="form-group">
+                <input type="text" class="form-control" placeholder="Type a task here" name="todoValue">
+                </div>
+            </form> 
+        </div>
+ 
+    </div>
+ </div>
 </template>
 
 
@@ -48,25 +99,58 @@
 
 
 <template name="addList">
-    <form>Create a list:
-        <input type="text" placeholder="List name here..." name="listName">
-    </form>
+    <div class="container">
+     <div class="row">
+        <div class="col-xs-12 col-md-11">
+            <form class="form-horizontal">
+                 <div class="form-group">
+                <input type="text" class="form-control" placeholder="Create a new list" name="listName">
+                </div>
+            </form> 
+        </div>
+ 
+    </div>
+ </div>
 </template>
 
 
 
 <template name="lists">
-    <h2>Lists</h2>
-    {{> addList}}
-<ul>
-    {{#each list}}
-        <li><a href="{{pathFor route='listPage'}}">{{name}}</a></li>
-    {{/each}}
-</ul>
+   <div class="container">
+        <h2>Lists</h2>
+        {{> addList}}
+        <div class="list-group">
+        {{#each list}}
+            <a href="{{pathFor route='listPage'}}" class="list-group-item">{{name}}</a>
+        {{/each}}
+        </div>
+    </div>
+
 </template>
 
 
 <template name="listPage">
    <h2>Tasks: {{name}}</h2>
     {{> todosList}}
+</template>
+
+
+<template name="search">
+    {{> esInput index="todos" placeholder="Search for todos" }}
+
+    <ul>
+        {{#esEach index="todos"}}
+             {{> todoItem}}
+        {{/esEach}}
+    </ul>
+
+    {{> esLoadMoreButton index="todos"}}
+
+    {{#ifEsHasNoResults index="todos"}}
+        <div class="no-results">No results found!</div>
+    {{/ifEsHasNoResults}}
+
+    {{#ifEsIsSearching index="todos"}}
+            <div>Loading...</div>
+    {{/ifEsIsSearching}}
 </template>

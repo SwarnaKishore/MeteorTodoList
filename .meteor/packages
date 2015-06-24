@@ -12,3 +12,7 @@ accounts-twitter
 accounts-ui
 accounts-password
 useraccounts:core
+
+twbs:bootstrap
+
+matteodem:easy-search

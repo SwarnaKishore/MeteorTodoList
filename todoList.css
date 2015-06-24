@@ -16,10 +16,13 @@
     outline:none;
 }
 
-
+li{
+     list-style-type: none;
+}
 .checked{
     background-color:#f0f0f0;
     color:#666;
+    
 }
 
 .checked .todo-value{
@@ -30,4 +33,9 @@
 .checked .todo-value:hover,
 .checked .todo-value:focus{
     background-color:#f0f0f0;
+}
+
+.footer {
+    padding:10px;
+    background-color: #f5f5f5;
 }
