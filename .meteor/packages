@@ -11,3 +11,6 @@ iron:router
 accounts-twitter
 accounts-ui
 accounts-password
+useraccounts:core
+useraccounts:bootstrap
+twbs:bootstrap

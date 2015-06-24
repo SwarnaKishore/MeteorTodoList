@@ -27,7 +27,7 @@ Template.todosCount.helpers({
     },
     'completedTodos': function(){
         var currentList = this._id;
-        return Todos.find({listId: currentList, checked: true}).count();
+        return Todos.find({listId: currentList, completed: true}).count();
     }
 });
 

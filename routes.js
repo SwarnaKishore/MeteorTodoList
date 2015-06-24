@@ -13,3 +13,8 @@ Router.route('/list/:_id', function(){
 }, {
     name: 'listPage'    
 });
+
+
+Router.route('/', function () {
+  this.render('lists');
+});

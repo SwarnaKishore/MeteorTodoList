@@ -1,9 +1,36 @@
+<template name="nav">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class=container>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">
+            Todo List
+          </span>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+        
+          <ul class="nav navbar-nav navbar-right">
+            {{> atNavButton}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
+
 
 
 <template name="main">
 
-   {{> loginButtons}}
-    {{> lists}}
+   {{> nav}}
     {{> yield}}
   <p>Copyright &copy; Todos, 2014-2015.</p>
 </template>
